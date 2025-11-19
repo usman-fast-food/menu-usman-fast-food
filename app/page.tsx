@@ -3,12 +3,14 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MenuCategory from '@/components/MenuCategory';
+import FloatingSidebar from '@/components/FloatingSidebar';
 import { menuData } from '@/data/menu';
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +25,25 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSidebarVisibilityChange = (isVisible: boolean) => {
+    setSidebarVisible(isVisible);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-white">
       <Header />
       
-      <main className="flex-grow container mx-auto px-3 sm:px-4 py-6 sm:py-8 md:py-12">
+      {/* Floating Sidebar - Shows on mobile/tablet only */}
+      <FloatingSidebar onVisibilityChange={handleSidebarVisibilityChange} />
+      
+      <main 
+        className={`flex-grow container mx-auto px-3 sm:px-4 py-6 sm:py-8 md:py-12 transition-all duration-300 ${
+          sidebarVisible ? 'md:pl-4 pl-[68px]' : 'pl-3 sm:pl-4'
+        }`}
+        style={{
+          paddingRight: '0.75rem', // px-3
+        }}
+      >
         {/* Welcome Section */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <div className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-bold mb-3 sm:mb-4 text-xs sm:text-sm md:text-base shadow-lg">
@@ -68,7 +84,7 @@ export default function Home() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 bg-yellow-400 text-black p-3 sm:p-4 rounded-full shadow-xl hover:bg-yellow-500 transition-all duration-300 hover:scale-110 z-40"
+          className="fixed bottom-6 sm:bottom-8 right-6 sm:right-8 bg-yellow-400 text-black p-3 sm:p-4 rounded-full shadow-xl hover:bg-yellow-500 transition-all duration-300 hover:scale-110 z-40"
           aria-label="Scroll to top"
         >
           <ArrowUp size={20} className="sm:w-6 sm:h-6" />

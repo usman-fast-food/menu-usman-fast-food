@@ -37,6 +37,12 @@ export default function MenuItem({ item }: MenuItemProps) {
               <span className="font-bold text-yellow-600 text-sm sm:text-base">Rs. {item.prices.large}</span>
             </div>
           )}
+          {item.prices.xl && (
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-gray-700 font-medium text-xs sm:text-sm">XL</span>
+              <span className="font-bold text-yellow-600 text-sm sm:text-base">Rs. {item.prices.xl}</span>
+            </div>
+          )}
           {item.prices.half && (
             <div className="flex items-center justify-between gap-2">
               <span className="text-gray-700 font-medium text-xs sm:text-sm">Half</span>
@@ -64,7 +70,7 @@ export default function MenuItem({ item }: MenuItemProps) {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
           quality={85}
-          priority={item.id <= 6} // First 6 images load with priority
+          priority={item.id <= 6}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA3gAA//9k="
           onError={(e) => {

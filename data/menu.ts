@@ -30,7 +30,7 @@ export const menuData: MenuCategory[] = [
       {
         id: 1,
         name: "Fajita Pizza",
-        prices: { small: 500, medium: 900, large: 1300, xl: 1950 },
+        prices: { small: 500, medium: 900, large: 1400, xl: 1950 },
         description: "Chicken Fajita, Capsicum, Tomato, onion, olives with Cheese",
         image: "/images/pizzas/Fajita.avif"
       },
@@ -86,7 +86,7 @@ export const menuData: MenuCategory[] = [
       {
         id: 9,
         name: "Usman Special",
-        prices: { small: 600, medium: 1050, large: 1650, xl: 3200 },
+        prices: { small: 600, medium: 1050, large: 1650, xl: 2200 },
         description: "Spiced Chicken, Cheese, sweet corn, Capsicum, Tomato, onion with Stuffing crust with Cheese & Special Sauce",
         image: "/images/pizzas/Cheese-Lover.jpeg"
       },
@@ -121,7 +121,7 @@ export const menuData: MenuCategory[] = [
       {
         id: 14,
         name: "Sandwich Pizza",
-        prices: { small: 850, medium: 1050, large: 1550 },
+        prices: { small: 650, medium: 1050, large: 1550 },
         description: "Chicken, Cheese, Olives, Capsicum, Tomato, onion with Sweet corn",
         image: "/images/pizzas/Sandwich.jpeg"
       },
@@ -256,7 +256,7 @@ export const menuData: MenuCategory[] = [
       {
         id: 33,
         name: "Chapli Cheese Burger + Fries",
-        price: 300,
+        price: 350,
         description: "Chapli kabab with cheese",
         image: '/images/burgers/Chipotle.jpg'
       },

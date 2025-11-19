@@ -14,7 +14,7 @@ export default function Header() {
     { id: 'pasta', name: 'Pasta', icon: '🍝' },
     { id: 'hot-corner', name: 'Hot Corner', icon: '🔥' },
     { id: 'bbq', name: 'BBQ', icon: '🍢' },
-    { id: 'deals', name: 'Deals', icon: '📦' },
+    { id: 'deals', name: 'Deals', icon: '🎁' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -40,8 +40,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Main Header */}
-      <header className="bg-black text-white sticky top-0 z-50 shadow-xl">
+      {/* Main Header - Hidden on mobile/small tablets, visible on medium+ screens */}
+      <header className="bg-black text-white sticky top-0 z-50 shadow-xl hidden md:block">
         <div className="container mx-auto px-3 sm:px-4 py-4">
           <div className="flex items-center justify-between gap-2">
             {/* Logo */}
@@ -53,19 +53,10 @@ export default function Header() {
                 Digital Menu
               </p>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-yellow-400 p-2 flex-shrink-0"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-wrap gap-2 mt-4 pb-1">
+          <nav className="flex items-center justify-center flex-wrap gap-2 mt-4 pb-1">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -78,24 +69,20 @@ export default function Header() {
             ))}
           </nav>
         </div>
+      </header>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-gray-900 border-t border-gray-800">
-            <nav className="container mx-auto px-3 sm:px-4 py-3 grid grid-cols-2 gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => scrollToSection(cat.id)}
-                  className="flex items-center justify-center gap-2 px-3 py-2.5 bg-gray-800 hover:bg-yellow-400 hover:text-black rounded-lg transition text-sm font-medium"
-                >
-                  <span className="text-lg">{cat.icon}</span>
-                  <span className="text-xs sm:text-sm">{cat.name}</span>
-                </button>
-              ))}
-            </nav>
+      {/* Mobile-only Simple Header - Shows only restaurant name */}
+      <header className="bg-black text-white sticky top-0 z-30 shadow-xl md:hidden">
+        <div className="container mx-auto px-3 py-3">
+          <div className="text-center">
+            <h1 className="text-xl sm:text-2xl font-bold text-yellow-400 leading-tight">
+              Usman Fast Food
+            </h1>
+            <p className="text-gray-300 text-[10px] sm:text-xs mt-0.5">
+              Digital Menu
+            </p>
           </div>
-        )}
+        </div>
       </header>
     </>
   );
